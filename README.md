@@ -49,11 +49,67 @@ Android Studio / Xcode for emulators and building
 
 The project follows Clean Architecture:
 
-![alt text](docs/readme/clean-arquitecture.png)
+```bash
+/lib
+|
+├── /core
+│   ├── /error
+│   │   └── failure.dart          # Manejo de errores y excepciones
+│   ├── /utils                    # Utilidades y funciones generales
+│   └── /constants                # Constantes usadas en la aplicación
+├── /features                     # Funcionalidades específicas de la aplicación
+│   └── /feature_name             # Cada feature tiene su propia carpeta
+│       ├── /data                 # Capa de datos
+│       │   ├── /datasources            # Modelos de datos
+│       │   ├── /models       # Fuentes de datos (API, base de datos)
+│       │   └── /repositories      # Implementaciones de repositorios
+│       ├── /domain               # Capa de dominio
+│       │   ├── /entities          # Entidades de negocio
+│       │   ├── /repositories      # Interfaces de repositorios
+│       │   └── /usecases          # Casos de uso de la aplicación
+│       └── /presentation          # Capa de presentación
+│           ├── /providers         # Proveedores para la gestión de estado
+│           ├── /pages             # Páginas de la aplicación
+│           └── /widgets           # Widgets reutilizables
+└── main.dart                     # Punto de entrada de la aplicación
+
+```
 
 Example
 
-![alt text](docs/readme/clean-arquitecture-example.png)
+```bash
+/lib
+|
+├── /core
+│   └── /error
+│       └── failure.dart
+├── /features
+│   └── /auth
+│       ├── /data
+│       │   ├── /datasources
+│       │   │   └── auth_remote_data_source.dart
+│       │   ├── /models
+│       │   │   └── user_model.dart
+│       │   └── /repositories
+│       │       └── auth_repository_impl.dart
+│       ├── /domain
+│       │   ├── /entities
+│       │   │   └── user.dart
+│       │   ├── /repositories
+│       │   │   └── auth_repository.dart
+│       │   └── /usecases
+│       │       ├── login_user.dart
+│       │       └── register_user.dart
+│       └── /presentation
+│           ├── /pages
+│           │   └── login_page.dart
+│           │   └── register_page.dart
+│           ├── /providers
+│           │   └── auth_providers.dart
+│           └── /widgets
+│               └── ... // Otros widgets relacionados con la autenticación
+└── main.dart
+```
 
 # Packages
 
